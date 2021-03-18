@@ -1,0 +1,14 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /course
+spring:
+  jpa:
+    hibernate.ddl-auto: update
+    show-sql: true
+    open-in-view: false
+  datasource:
+    url: "jdbc:mysql://${MYSQL_HOST:localhost}:3306/course"
+    username: root
+    password: root001
+    initialization-mode: always

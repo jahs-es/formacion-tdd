@@ -1,0 +1,20 @@
+sonarqube:
+  image: sonarqube:7.9.4-community
+  ports:
+    - 9000:9000
+  environment:
+    - SONARQUBE_JDBC_USERNAME=admin
+    - SONARQUBE_JDBC_PASSWORD=admin
+
+db:
+  image: mysql:8.0.22
+  volumes:
+    - "./.mysql-data/db:/var/lib/mysql"
+  restart: always
+  ports:
+    - 3306:3306
+  environment:
+    - MYSQL_ROOT_PASSWORD=admin
+    - MYSQL_DATABASE=course
+    - MYSQL_USER=course
+    - MYSQL_PASSWORD=course

@@ -7,6 +7,8 @@ import com.formaciontdd.infrastructure.persistence.entities.IssueEntity;
 import com.formaciontdd.infrastructure.providers.converters.IssueConverter;
 import org.springframework.stereotype.Component;
 
+import java.util.Optional;
+
 @Component
 public class DatabaseIssueEntityProvider implements IssueProvider {
 
@@ -22,11 +24,21 @@ public class DatabaseIssueEntityProvider implements IssueProvider {
 
     @Override
     public Issue save(final Issue issue) {
-
         IssueEntity issueEntity = issueConverter.map(issue);
 
         issueEntity = jpaIssueRepository.save(issueEntity);
 
         return issueConverter.map(issueEntity);
+    }
+
+    @Override
+    public Optional<Issue> get(final Long id) {
+        Optional<IssueEntity> issueEntity = jpaIssueRepository.findById(id);
+
+        if (issueEntity.isEmpty()) {
+            return Optional.empty();
+        }
+
+        return Optional.of(issueConverter.map(issueEntity.get()));
     }
 }

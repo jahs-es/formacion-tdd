@@ -3,12 +3,11 @@ package com.formaciontdd.domain.model;
 import com.formaciontdd.infrastructure.rest.vo.IssueResponse;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
-import lombok.Builder;
-import lombok.Value;
+import lombok.*;
 
 import java.util.Date;
 
-@Value
+@Data
 @Builder
 @JsonDeserialize(builder = Issue.IssueBuilder.class)
 public class Issue {

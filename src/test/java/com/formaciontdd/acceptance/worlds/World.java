@@ -1,6 +1,8 @@
 package com.formaciontdd.acceptance.worlds;
 
+import com.formaciontdd.infrastructure.rest.vo.IssueResponse;
 import lombok.Data;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
@@ -18,6 +20,9 @@ public class World {
 
   private String securityUser;
   private String securityPassword;
+
+  private HttpStatus lastHTTPCode;
+  private IssueResponse lastBody;
 
   @Data
   public static class ErrorResponse {
